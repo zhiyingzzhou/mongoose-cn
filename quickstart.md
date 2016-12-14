@@ -1,6 +1,6 @@
 ## 开始
 
-首先确保你已经安装了[Mongodb](#)和[Node.js](#).
+首先确保你已经安装了[Mongodb](http://www.mongodb.org/downloads)和[Node.js](http://nodejs.org/).
 下一步在命令行中使用npm安装mongoose：
 
 ```sh

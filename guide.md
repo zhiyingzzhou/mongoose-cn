@@ -3,23 +3,23 @@
 #### 定义你的schema
 在mongoose中一切都是从一个Schma开始的.每一个schema映射到一个mongodb集合并且定义了集合中文档的结构.
 
-<pre>
-	const mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+```js
+    const mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
-	const blogSchema = new Schema({
-		title: String,
-		author: String,
-		body: String,
-		comments: [{ body: string, date: Date }],
-		date: { type: Date, default: Date.now },
-		hidden: Boolean,
-		meta: {
-			votes: Number,
-			favs: Number
-		}
-	});
-</pre>
+    const blogSchema = new Schema({
+        title: String,
+        author: String,
+        body: String,
+        comments: [{ body: string, date: Date }],
+        date: { type: Date, default: Date.now },
+        hidden: Boolean,
+        meta: {
+            votes: Number,
+            favs: Number
+        }
+    });
+```
 如果你想在稍后添加额外的键,可以使用[Schema#add](#)方法.
 
 在我们的schema中每一个键被转化为相关的SchemaType各自定义文档中的一个属性.
@@ -46,50 +46,47 @@ Schemas 不仅仅定义了你文档的结构和属性,而且它们也可以定�
 要使用我们的schema定义,我们需要将我们的blogSchema转化成一个我们可以工作的模型(Model),所以,我们将它传递进mongoose.model(modelName,schema);
 
 `
-	const blog = mongoose.model('Blog',blogSchema);
+    const blog = mongoose.model('Blog',blogSchema);
 `
 
 #### 实例化方法
 
 模型的实例是文档.文档有许多它们自己内置的实例化方法.我们也可以定义我们自己的自定义文档实例方法.
 
-<pre>
-	//定义一个schema
-	const animalSchema = new Schema({name: String,type: String});
+```js
+    //定义一个schema
+    const animalSchema = new Schema({name: String,type: String});
 
-	//指定一个函数到我们的animalSchema上的"methods"对象上
-	animalSchema.methods.findSimilarTypes = function(cb){
-		return this.model('Animal').find({ type: this.type },cb);
-	}
-</pre>
+    //指定一个函数到我们的animalSchema上的"methods"对象上
+    animalSchema.methods.findSimilarTypes = function(cb){
+        return this.model('Animal').find({ type: this.type },cb);
+    }
+```
 
 现在我们的所有animal实例都会有一个findSimilarTypes方法:
-<pre>
-	const Animal = mongoose.model('Animal', animalSchema),
-	dog = new Animal({type: 'dog' });
+```js
+    const Animal = mongoose.model('Animal', animalSchema),
+    dog = new Animal({type: 'dog' });
 
-	dog.findSimilarTypes(function(err, dogs){
-		console.log(dogs);
-	});
-</pre>
+    dog.findSimilarTypes(function(err, dogs){
+        console.log(dogs);
+    });
+```
 ###### 重写默认的mongoose文档方法可能会导致不可预测的结果.查看[这里](#)获得更多的详细信息.
 
 #### 静态方法
 
 添加一个模型的静态方法是非常简单的.继续使用我们的animalSchema:
 
-<pre>
-	//指定一个函数到我们animalSchema的"statics"对象中
+```js
+    //指定一个函数到我们animalSchema的"statics"对象中
 
-	animalSchema.statics.findByName = function(name,cb){
-		return this.find({ name: new RegExp(name,'i') }, cb );
-	}
+    animalSchema.statics.findByName = function(name,cb){
+        return this.find({ name: new RegExp(name,'i') }, cb );
+    }
 
-	const Animal = mongoose.model('Animal', animalSchema);
-	Animal.findByName('fido',function(err,animals){
-		console.log(animals);	
-	});
-</pre>
-
-
-
+    const Animal = mongoose.model('Animal', animalSchema);
+    Animal.findByName('fido',function(err,animals){
+        console.log(animals);    
+    });
+```

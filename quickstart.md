@@ -3,9 +3,9 @@
 首先确保你已经安装了[Mongodb](#)和[Node.js](#).
 下一步在命令行中使用npm安装mongoose：
 
-`
+```sh
     $ npm install mongoose
-`
+```
 
 现在说我们喜欢毛绒绒的小猫并且想记录我们在mongodb遇见的每一只小猫.第一件事我们需要在我们的项目中导入mongoose然后连接到我们在本地运行的MongoDB实例中的test数据库.
 ```js

@@ -45,9 +45,9 @@ Schemas 不仅仅定义了你文档的结构和属性,而且它们也可以定�
 
 要使用我们的schema定义,我们需要将我们的blogSchema转化成一个我们可以工作的模型(Model),所以,我们将它传递进mongoose.model(modelName,schema);
 
-`
+```js
     const blog = mongoose.model('Blog',blogSchema);
-`
+```
 
 #### 实例化方法
 

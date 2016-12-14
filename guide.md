@@ -1,5 +1,8 @@
 ## Schemas
 
+如果你还没有这样做,请花一些时间去阅读[快速开始](https://github.com/zhiyingzzhou/mongoose-cn/blob/master/quickstart.md)了解Mongoose是如何工作的.如果你正在从3.x升级到4.x请阅读[迁移指南](#)
+
+
 #### 定义你的schema
 在mongoose中一切都是从一个Schma开始的.每一个schema映射到一个mongodb集合并且定义了集合中文档的结构.
 

@@ -48,7 +48,7 @@
 	KittySchema.methods.speak = function(){
 		let greeting = this.name
 			? 'Meow name is ' + this.name
-			: 'I don't hava a name';
+			: `I don't hava a name`;
 		console.log(greeting);
 	}
 

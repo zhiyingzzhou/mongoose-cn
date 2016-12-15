@@ -1,6 +1,6 @@
 ## Models 
 
-[Models](#) 是从我们`Schema`定义编译的构造函数.这些models的实例代表了文档,实例可以从我们的数据库保存和检索数据.所有文档通过这些models从数据库创建和检索.
+[Models](#) 是从我们`Schema`定义编译的构造函数.这些models的实例代表了文档,实例可以从我们的数据库保存和检索数据.所有文档通过这些models从数据库被创建和检索.
 
 #### 编译你的第一个model
 
@@ -8,7 +8,7 @@
 	const schema = new mongoose.Schema({ name: 'string', size: 'string' });
 	const Tank = mongoose.model('Tank',schema);
 ```
-第一个参数是你的model集合的单数名称.Mongoose自动查找你model名称的复数形式(ps:单数形式是你编译schema提供的名称,复数形式是MongoDB中集合的名称,比如你在文件中定义mongoose.model()中第一个参数是Tank,那么mongoose将会自动查找MongoDB中名为tanks的集合).因此,在上面的例子中,model Tank用于数据库中tanks集合. `.model`函数制作schema的拷贝.确保在调用.model()之前你已经添加了一切.
+第一个参数是你的model集合的单数名称.Mongoose自动查找你model名称的复数形式(ps:单数形式是你编译schema提供的名称,复数形式是MongoDB中集合的名称,比如你在文件中定义mongoose.model()中第一个参数是Tank,那么mongoose将会自动查找MongoDB中名为tanks的集合).因此,在上面的例子中,model Tank用于数据库中tanks集合. `.model`函数制作schema的拷贝.请确保在调用.model()之前你已经添加了一切.
 
 #### 构造文档
 
@@ -27,7 +27,7 @@
 		//保存成功!
 	});
 ```
-注意没有任何tanks被创建和删除,直到你的models连接是打开的.每一个model都有一个相对应的连接.当你使用`mongoose.model()`,你的model将使用默认的mongoose连接:
+注意除非你的models连接是打开的,否则没有任何tanks被创建和删除,.每一个model有一个相对应的连接.当你使用`mongoose.model()`,你的model将使用默认的mongoose连接:
 ```js
 	mongoose.connect('localhost','gettingstarted');
 ```
